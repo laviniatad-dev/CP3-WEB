@@ -52,3 +52,22 @@ function atualizarCarrinho() {
 }
 
 atualizarCarrinho()
+
+const botaoCupom = document.getElementById('.cupom')
+
+let descontoAplicado = false
+
+if (botaoCupom) {
+    botaoCupom.addEventListener('click', () =>{
+        if (descontoAplicado == false) {
+            const total = carrinho.reduce((acc, item) => {
+                return acc + item.preco
+            }, 0)
+            const totalDesconto = total * 0.9
+            document.getElementById('valor-total').innerText = totalDesconto.toFixed(2)
+            descontoAplicado = true
+        }
+    })
+}
+
+const finalizar = document.querySelector('.finalizar')
